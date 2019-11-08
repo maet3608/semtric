@@ -1,0 +1,1 @@
+A file that does not contain a network to test the canRead method of NetworkReaders.

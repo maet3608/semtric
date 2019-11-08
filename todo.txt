@@ -1,0 +1,70 @@
+TODO
+
+
+Change Item. Instead of Item[T] use:
+
+abstract class Item { 
+  type T 
+  val init: T 
+  private var value: T = init 
+  def get: T = value 
+  def set(x: T): unit = { value = x } }
+
+see
+http://lampwww.epfl.ch/~odersky/papers/ScalableComponent.pdf
+
+- Semtric CLI
+  semtric> load <network>
+  semtric> show max_lines=100 max_items=100 max_level=4 show_type=false show_uuid=0
+  semtric> query <Kana*>
+  => doucmentation, tests, exceptions for error in parsing/command line
+
+
+Add item level to network (similar to print network)
+=> network.levels() => Map[UUID,level:Int]
+
+
+Tests for network methods: thats(item), ...
+
+Tests for QNodes = >QValue, QVariable 
+
+QFunctions should check number and type of arguments
+
+Implement Ordering (= sorting) for collections of Items
+
+
+- add Qfunctions: 
+  take_random(expression, n)
+  QFSum, QFMax, QFMin, QFMean, QFStd, QFSortBy(arg, varname, varname, ...)
+  boolean expressions (greater than = GT, ...): QFGT, QFGTE, QFEquals, 
+  ?kind(expr,kind), e.g. ?kind(<age>, int), ?kind(<sound>, audio/jpg)
+Tests for Query, QParser, ...
+
+Addition/Deletion of items/relation from network
+
+Creation of item types with base and sub kind specification
+- string/python, string/latex, int/unsigned
+  => try to create item for full kind first, eg. python editor for string/python
+     if not available fall back to base type, e.g. string
+
+Registration for (new) item types
+- allows to add new item types that can be read, written, querried, ...
+- e.g. IHtml, IAudio, IPython, ...
+
+Cleanup and simplify importers <= take advantage of implicit item conversion
+
+merging of graphs
+- save/load of differentials 
+
+Test network file-formats on unix/mac
+
+Readers and writers for a Semtric database/project 
+= network + data folders
+=> Zipped: ZipOutputStream 
+=> http://stackoverflow.com/questions/14462371/preferred-way-to-use-java-zipoutputstream-and-bufferedoutputstream
+=> http://www.programcreek.com/java-api-examples/index.php?api=java.util.zip.ZipOutputStream
+   http://www.java2s.com/Tutorial/Java/0180__File/CreateZipOutputStreamfromFileOutputStream.htm
+
+Json importer 
+
+
